@@ -1,4 +1,0 @@
-package transformer
-
-class FileTransformer {
-}
