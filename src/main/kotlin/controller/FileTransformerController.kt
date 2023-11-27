@@ -28,5 +28,3 @@ class FileTransformerController(
             .defaultIfEmpty(ResponseEntity.badRequest().build())
             }
     }
-
-}
