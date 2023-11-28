@@ -9,9 +9,11 @@ import javax.persistence.Id
 @Entity
 class Person(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: UUID,
-
+    val uuid: UUID,
+    val id: String,
     val name: String,
+    val likes: String,
     val transport: String,
-    val topSpeed: String
+    val avgSpeed: Double,
+    val topSpeed: Double
 )
