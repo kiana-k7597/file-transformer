@@ -3,15 +3,14 @@ package filetransformer.unit
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.node.ArrayNode
 import io.mockk.*
-import model.Person
+import filetransformer.model.Person
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import org.springframework.mock.web.MockMultipartFile
-import repository.PersonRepository
-import service.FileProcessingService
-import service.FileValidationService
-import transformer.transformLineToPerson
+import filetransformer.repository.PersonRepository
+import filetransformer.service.FileProcessingService
+import filetransformer.service.FileValidationService
 import java.nio.charset.StandardCharsets
 import java.util.*
 

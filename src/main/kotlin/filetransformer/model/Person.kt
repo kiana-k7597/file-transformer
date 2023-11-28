@@ -1,4 +1,4 @@
-package model
+package filetransformer.model
 
 import java.util.*
 import javax.persistence.Entity
@@ -8,7 +8,7 @@ import javax.persistence.Id
 
 @Entity
 class Person(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     val uuid: UUID,
     val id: String,
     val name: String,

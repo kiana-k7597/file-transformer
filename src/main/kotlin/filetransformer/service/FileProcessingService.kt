@@ -1,15 +1,15 @@
-package service
+package filetransformer.service
 
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.node.JsonNodeFactory
-import model.Person
+import filetransformer.model.Person
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import org.springframework.web.multipart.MultipartFile
-import repository.PersonRepository
-import transformer.transformLineToPerson
+import filetransformer.repository.PersonRepository
+import filetransformer.transformer.transformLineToPerson
 import java.nio.charset.StandardCharsets
 
 @Service
@@ -40,7 +40,7 @@ class FileProcessingService(
     }
 
     private fun savePerson(fileContent: String, skipValidation: Boolean){
-        fileContent.lines().forEach { line ->
+        fileContent.trim().split("\n").forEach { line ->
             val parts = line.split("|")
             if(!skipValidation){
             fileValidationService.isValidFormat(parts)

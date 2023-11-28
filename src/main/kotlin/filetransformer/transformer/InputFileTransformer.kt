@@ -1,6 +1,6 @@
-package transformer
+package filetransformer.transformer
 
-import model.Person
+import filetransformer.model.Person
 import java.util.*
 
 fun transformLineToPerson(line: String): Person {

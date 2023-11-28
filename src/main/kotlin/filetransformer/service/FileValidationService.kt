@@ -1,4 +1,4 @@
-package service
+package filetransformer.service
 
 import org.springframework.stereotype.Service
 import org.springframework.web.multipart.MultipartFile
@@ -34,7 +34,7 @@ class FileValidationService {
     private fun validateId(id: String) {
         val idLength = id.length
         require(id.isNotBlank()) { "ID cannot be blank" }
-        require(idLength == 5) {"ID length must be exactly 5 characters; current length is $idLength."}
+        require(idLength == 6) {"ID length must be exactly 6 characters; current length is $idLength."}
     }
 
     fun isValidSize(parts: List<String>) {
