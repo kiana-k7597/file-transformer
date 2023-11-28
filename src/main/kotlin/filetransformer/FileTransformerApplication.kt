@@ -1,4 +1,4 @@
-package example.filetransformer
+package filetransformer
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
