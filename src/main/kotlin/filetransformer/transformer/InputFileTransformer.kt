@@ -3,8 +3,7 @@ package filetransformer.transformer
 import filetransformer.model.Person
 import java.util.*
 
-fun transformLineToPerson(line: String): Person {
-        val parts = line.split("|")
+fun transformLineToPerson(parts: List<String>): Person {
             return Person(
                 uuid = UUID.fromString(parts[0]),
                 id = parts [1],

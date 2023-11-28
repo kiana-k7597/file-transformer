@@ -64,7 +64,7 @@ class FileValidationService {
     }
 
     private fun validateSpeed(speed: String, fieldName: String) {
-        val speedValue = speed.toDouble()
+        val speedValue = speed.trim().toDoubleOrNull() ?: throw IllegalArgumentException("Invalid speed value: $speed")
         require(speedValue >= 0) { "$fieldName must be non-negative" }
         require(speedValue < 1000) { "$fieldName must be less than 1000" }
     }

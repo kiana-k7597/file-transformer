@@ -41,12 +41,14 @@ class FileProcessingService(
 
     private fun savePerson(fileContent: String, skipValidation: Boolean){
         fileContent.trim().split("\n").forEach { line ->
-            val parts = line.split("|")
+            val cleanedLine = line.replace("\n", "").trim()
+
+            val parts = cleanedLine.split("\\|".toRegex()).map { it.trim() }
             if(!skipValidation){
             fileValidationService.isValidFormat(parts)
             }
 
-            val person = transformLineToPerson(line)
+            val person = transformLineToPerson(parts)
             personRepository.save(person)
         }
     }
