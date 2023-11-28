@@ -24,10 +24,6 @@ class FileProcessingService(
 
 
     fun processFileContent(file: MultipartFile, skipValidation: Boolean): ByteArray {
-        if (file.isEmpty) {
-            log.warn("The file requested for processing is empty")
-        }
-
         fileValidationService.isNotEmptyFile(file)
 
         val fileContent = String(file.bytes, StandardCharsets.UTF_8)
