@@ -24,11 +24,13 @@ class FileProcessingService(
 
 
     fun processFileContent(file: MultipartFile, skipValidation: Boolean): ByteArray {
-        fileValidationService.isNotEmptyFile(file)
+        if (!skipValidation) {
+            fileValidationService.isNotEmptyFile(file)
+        }
 
         val fileContent = String(file.bytes, StandardCharsets.UTF_8)
 
-        savePerson(fileContent)
+        savePerson(fileContent, skipValidation)
 
         val persons = personRepository.findAll()
 
@@ -37,10 +39,12 @@ class FileProcessingService(
         return convertJsonToFileContent(rootNode)
     }
 
-    private fun savePerson(fileContent: String){
+    private fun savePerson(fileContent: String, skipValidation: Boolean){
         fileContent.lines().forEach { line ->
             val parts = line.split("|")
+            if(!skipValidation){
             fileValidationService.isValidFormat(parts)
+            }
 
             val person = transformLineToPerson(line)
             personRepository.save(person)

@@ -11,6 +11,7 @@ import org.springframework.mock.web.MockMultipartFile
 import repository.PersonRepository
 import service.FileProcessingService
 import service.FileValidationService
+import transformer.transformLineToPerson
 import java.nio.charset.StandardCharsets
 import java.util.*
 
@@ -45,8 +46,7 @@ class FileProcessingServiceUnitTests {
 
     @Test
     fun `processFileContent should process multiple lines correctly`() {
-        val fileContent = "18148426-89e1-11ee-b9d1-0242ac120002|1X1D14|John Smith|Likes Apricots|Rides A Bike|6.2|12.1 \n" +
-                "3ce2d17b-e66a-4c1e-bca3-40eb1c9222c7|2X2D24|Mike Smith|Likes Grape|Drives an SUV|35.0|95.5 \n"
+        val fileContent = "18148426-89e1-11ee-b9d1-0242ac120002|1X1D14|John Smith|Likes Apricots|Rides A Bike|6.2|12.1 \n3ce2d17b-e66a-4c1e-bca3-40eb1c9222c7|2X2D24|Mike Smith|Likes Grape|Drives an SUV|35.0|95.5"
 
         val multipartFile = MockMultipartFile("file", fileContent.toByteArray(StandardCharsets.UTF_8))
         val person1 = Person(UUID.fromString("18148426-89e1-11ee-b9d1-0242ac120002"), "1X1D14", "John Smith", "Likes Apricots", "Rides A Bike", 6.2, 12.1)
